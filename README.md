@@ -1,4 +1,20 @@
-Buka File main1.py menggunakan notepad
-Cari Private key lalu isi dengan private key metamask kalian (pastikan sudah ada ETH jaringan Taiko) kalau belum bridge di Xy Finance Bridge
-Siapkan ETH Taiko est 100$ untuk 3 bulan kedepan, bisa kurang tergantung garap berapa lama
-1 hari kisaran 1.2 $
+# Panduan Konfigurasi dan Penggunaan
+
+## Langkah-langkah
+
+1. **Buka File**  
+   Buka file `main1.py` menggunakan Notepad atau editor teks pilihan Anda.
+
+2. **Isi Private Key**  
+   Cari bagian yang meminta *Private Key* dan isi dengan *Private Key* Metamask Anda.  
+   **Catatan:** Pastikan akun Metamask Anda sudah memiliki jaringan **ETH Taiko**. Jika belum, gunakan **Xy Finance Bridge** untuk melakukan *bridging*.
+
+3. **Siapkan ETH Taiko**  
+   Pastikan Anda memiliki estimasi ETH Taiko senilai **$100** untuk digunakan selama 3 bulan ke depan.  
+   - Estimasi biaya per hari: **~$1.2**  
+   - Biaya aktual dapat bervariasi tergantung seberapa sering pekerjaan dilakukan.
+
+## Sumber Daya Tambahan
+- [Xy Finance Bridge](https://www.xyfinance.com/bridge)
+- [Cara Menambahkan Jaringan Taiko di Metamask](#)
+
