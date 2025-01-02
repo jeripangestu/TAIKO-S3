@@ -13,6 +13,8 @@
    Pastikan Anda memiliki estimasi ETH Taiko senilai **$100** untuk digunakan selama 3 bulan ke depan.  
    - Estimasi biaya per hari: **~$1.2**  
    - Biaya aktual dapat bervariasi tergantung gas fee.
+4. **Jalankan Bot**
+   - ``python main1.py``
 
 ## refferensi
 - [Xy Finance Bridge](https://www.xyfinance.com/bridge)
