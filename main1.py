@@ -3,22 +3,24 @@ import json, requests, time, random
 from datetime import datetime
 
 c = requests.Session()
-
 w3 = Web3(Web3.HTTPProvider('https://rpc.mainnet.taiko.xyz'))
 
 with open("abi.json", "r") as f:
     abi = json.load(f)
 
-privatekey = "ISI PRIVATE KEY METAMASK KALIAN"
+privatekey = "ISI PRIVATE KEY KALIAN"  
 address = w3.eth.account.from_key(privatekey).address
 
-if(w3.is_connected()):
+if w3.is_connected():
     print("Connected to the network")
 else:
     print("Failed to connect to the network")
 
 def userdata(address, totalvotes):
-    users = c.get(f"https://trailblazer.mainnet.taiko.xyz/s3/user/rank?address={address}", headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}).json()
+    users = c.get(
+        f"https://trailblazer.mainnet.taiko.xyz/s3/user/rank?address={address}",
+        headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}
+    ).json()
     output = (
         f"Rank >> {users['rank']}\n"
         f"Score >> {users['totalScore']}\n"
@@ -32,7 +34,7 @@ def userdata(address, totalvotes):
     print(output)
     c.post(
         url='https://api.telegram.org/bot7549668811:AAEkfnmaiWTzd1P2eQnOeRMA965EzIlHXB8/sendMessage',
-        data={'chat_id': 5462185992, 'text': output}
+        data={'chat_id': 5462185992, 'text': output} #GANTI CHAT ID DENGAN ID TELEGRAM KALIAN 
     ).json()
 
 def vote_tx():
@@ -42,7 +44,7 @@ def vote_tx():
             {
                 "from": w3.to_checksum_address(address),
                 "value": 0,
-                "gasPrice": int(w3.eth.gas_price*2),
+                "gasPrice": w3.to_wei(0.234, 'gwei'),
                 "gas": 0,
                 "nonce": w3.eth.get_transaction_count(address)
             }
@@ -64,8 +66,9 @@ def vote_tx():
 i = 0
 last_executed = None
 max = random.randint(72, 75)
+
 while True:
-    if(max >= i):
+    if max >= i:
         vote_tx()
     else:
         time.sleep(60)
@@ -77,11 +80,11 @@ while True:
     print("--------------------------------")
     time.sleep(times)
     current_time = datetime.fromtimestamp(time.time())
-    if current_time.hour == 7 and last_executed is None:
+    if current_time.hour == 7 and (last_executed is None or last_executed != current_time.date()):
         userdata(address, i)
         print("Daily Userdata Sent at >> " + datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
         print("Daily Tx Reset at >> " + datetime.fromtimestamp(time.time() + 86400).strftime('%Y-%m-%d %H:%M:%S'))
         print("--------------------------------")
-        last_executed = current_time.date()
+        last_executed = current_time.date()  # Perbarui dengan tanggal hari ini
         max = random.randint(72, 75)
         i = 0
