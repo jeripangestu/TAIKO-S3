@@ -18,7 +18,7 @@ else:
     print("Failed to connect to the network")
 
 def userdata(address, totalvotes):
-    users = c.get(f"https://trailblazer.mainnet.taiko.xyz/s2/user/rank?address={address}", headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}).json()
+    users = c.get(f"https://trailblazer.mainnet.taiko.xyz/s3/user/rank?address={address}", headers={"user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"}).json()
     output = (
         f"Rank >> {users['rank']}\n"
         f"Score >> {users['totalScore']}\n"
